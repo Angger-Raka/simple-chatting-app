@@ -1,3 +1,4 @@
+import 'package:test_chatting/helper.dart';
 import 'package:test_chatting/pages/calls_page.dart';
 import 'package:test_chatting/pages/contacts_page.dart';
 import 'package:test_chatting/pages/message_page.dart';
@@ -5,6 +6,9 @@ import 'package:test_chatting/pages/notifications_page.dart';
 import 'package:test_chatting/pages/profile_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:test_chatting/theme.dart';
+import 'package:test_chatting/widgets/avatar.dart';
+import 'package:test_chatting/helper.dart';
+import 'package:test_chatting/widgets/icon_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -47,15 +51,33 @@ class _HomeScreenState extends State<HomeScreen> {
           title: ValueListenableBuilder(
             valueListenable: title,
             builder: (BuildContext context, String value, _) {
-              return Text(
-                value,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+              return Center(
+                child: Text(
+                  value,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
               );
             },
           ),
+          leadingWidth: 50,
+          leading: Align(
+            alignment: Alignment.centerRight,
+            child: IconBackground(
+              icon: Icons.search,
+              onTap: () {
+                print('TODO SEARCHING');
+              },
+            ),
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 24.0),
+              child: Avatar.small(imageUrl: Helpers.randomPictureUrl()),
+            )
+          ],
         ),
         body: ValueListenableBuilder(
           valueListenable: pageIndex,
