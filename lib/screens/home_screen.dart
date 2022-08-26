@@ -46,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          iconTheme: Theme.of(context).iconTheme,
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: ValueListenableBuilder(
@@ -117,50 +118,60 @@ class _BottomNavigationBarState extends State<_BottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      bottom: true,
-      child: Container(
-        color: Colors.transparent,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _NavigatiionBarItem(
-              index: 0,
-              label: "Home",
-              icon: Icons.home,
-              isSelected: (selectedIndex == 0),
-              onTap: handleItemSelected,
+    final brightness = Theme.of(context).brightness;
+
+    return Card(
+      color: (brightness == Brightness.light) ? Colors.transparent : null,
+      elevation: 0,
+      margin: EdgeInsets.all(0),
+      child: SafeArea(
+        top: false,
+        bottom: true,
+        child: Container(
+          color: Colors.transparent,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 16, left: 8, right: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _NavigatiionBarItem(
+                  index: 0,
+                  label: "Home",
+                  icon: Icons.home,
+                  isSelected: (selectedIndex == 0),
+                  onTap: handleItemSelected,
+                ),
+                _NavigatiionBarItem(
+                  index: 1,
+                  label: "Messaging",
+                  icon: Icons.message,
+                  isSelected: (selectedIndex == 1),
+                  onTap: handleItemSelected,
+                ),
+                _NavigatiionBarItem(
+                  index: 2,
+                  label: "Order",
+                  icon: Icons.shop,
+                  isSelected: (selectedIndex == 2),
+                  onTap: handleItemSelected,
+                ),
+                _NavigatiionBarItem(
+                  index: 3,
+                  label: "Delivery",
+                  icon: Icons.delivery_dining,
+                  isSelected: (selectedIndex == 3),
+                  onTap: handleItemSelected,
+                ),
+                _NavigatiionBarItem(
+                  index: 4,
+                  label: "Profile",
+                  icon: Icons.person,
+                  isSelected: (selectedIndex == 4),
+                  onTap: handleItemSelected,
+                ),
+              ],
             ),
-            _NavigatiionBarItem(
-              index: 1,
-              label: "Messaging",
-              icon: Icons.message,
-              isSelected: (selectedIndex == 1),
-              onTap: handleItemSelected,
-            ),
-            _NavigatiionBarItem(
-              index: 2,
-              label: "Order",
-              icon: Icons.shop,
-              isSelected: (selectedIndex == 2),
-              onTap: handleItemSelected,
-            ),
-            _NavigatiionBarItem(
-              index: 3,
-              label: "Delivery",
-              icon: Icons.delivery_dining,
-              isSelected: (selectedIndex == 3),
-              onTap: handleItemSelected,
-            ),
-            _NavigatiionBarItem(
-              index: 4,
-              label: "Profile",
-              icon: Icons.person,
-              isSelected: (selectedIndex == 4),
-              onTap: handleItemSelected,
-            ),
-          ],
+          ),
         ),
       ),
     );

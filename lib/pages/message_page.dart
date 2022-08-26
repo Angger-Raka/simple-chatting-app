@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
@@ -43,21 +45,94 @@ class _MessageTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-            padding: EdgeInsets.all(8),
-            child: Avatar.medium(imageUrl: messageData.profilePicture)),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-            Text(messageData.senderName),
-            Text(messageData.message)
-            ],
-          ),
-        )
-      ],
+    return Container(
+      height: 100,
+      margin: EdgeInsets.symmetric(horizontal: 8),
+      decoration: const BoxDecoration(
+          border: Border(
+              bottom: BorderSide(
+        color: Colors.grey,
+        width: 0.2,
+      ))),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          children: [
+            Padding(
+                padding: EdgeInsets.all(8),
+                child: Avatar.medium(imageUrl: messageData.profilePicture)),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(messageData.senderName,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          letterSpacing: 0.2,
+                          wordSpacing: 1.5,
+                          fontWeight: FontWeight.w900,
+                        )),
+                  ),
+                  SizedBox(
+                    height: 20,
+                    child: Text(
+                      messageData.message,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textFaded,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      messageData.dateMessage.toUpperCase(),
+                      style: const TextStyle(
+                        fontSize: 11,
+                        letterSpacing: -0.2,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textFaded,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      width: 18,
+                      height: 18,
+                      decoration: const BoxDecoration(
+                        color: AppColors.secondary,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Center(
+                        child: const Text(
+                          '1',
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: AppColors.textLigth,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ))
+          ],
+        ),
+      ),
     );
   }
 }
