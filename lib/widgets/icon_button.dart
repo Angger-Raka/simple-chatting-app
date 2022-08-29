@@ -31,3 +31,28 @@ class IconBackground extends StatelessWidget {
     );
   }
 }
+
+class IconBorder extends StatelessWidget {
+  const IconBorder({
+    Key? key,
+    required this.icon,
+    required this.onTap,
+  }) : super(key: key);
+
+  final IconData icon;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(6),
+      splashColor: AppColors.secondary,
+      onTap: onTap,
+      child: Container(
+        // decoration: DecoratedBox(
+          
+        // ),
+      ),
+    );
+  }
+}
