@@ -7,7 +7,6 @@ import 'package:test_chatting/pages/profile_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:test_chatting/theme.dart';
 import 'package:test_chatting/widgets/avatar.dart';
-import 'package:test_chatting/helper.dart';
 import 'package:test_chatting/widgets/icon_button.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -123,7 +122,7 @@ class _BottomNavigationBarState extends State<_BottomNavigationBar> {
     return Card(
       color: (brightness == Brightness.light) ? Colors.transparent : null,
       elevation: 0,
-      margin: EdgeInsets.all(0),
+      margin: const EdgeInsets.all(0),
       child: SafeArea(
         top: false,
         bottom: true,
@@ -217,11 +216,11 @@ class _NavigatiionBarItem extends StatelessWidget {
             Text(
               label,
               style: isSelected
-                  ? TextStyle(
+                  ? const TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
                       color: AppColors.secondary)
-                  : TextStyle(fontSize: 13),
+                  : const TextStyle(fontSize: 13),
             )
           ],
         ),

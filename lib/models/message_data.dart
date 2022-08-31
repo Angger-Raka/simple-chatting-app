@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 
 @immutable
 class MessageData {
-  MessageData(
+  const MessageData(
       {required this.senderName,
       required this.message,
       required this.messageDate,

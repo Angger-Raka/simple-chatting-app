@@ -14,7 +14,7 @@ class MessagePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: _Stories(),
         ),
         SliverList(
@@ -50,7 +50,7 @@ class _MessageTitle extends StatelessWidget {
       },
       child: Container(
         height: 100,
-        margin: EdgeInsets.symmetric(horizontal: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 8),
         decoration: const BoxDecoration(
             border: Border(
                 bottom: BorderSide(
@@ -62,7 +62,7 @@ class _MessageTitle extends StatelessWidget {
           child: Row(
             children: [
               Padding(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: Avatar.medium(imageUrl: messageData.profilePicture)),
               Expanded(
                 child: Column(
@@ -121,8 +121,8 @@ class _MessageTitle extends StatelessWidget {
                           color: AppColors.secondary,
                           shape: BoxShape.circle,
                         ),
-                        child: Center(
-                          child: const Text(
+                        child: const Center(
+                          child: Text(
                             '1',
                             style: TextStyle(
                               fontSize: 10,
@@ -153,7 +153,7 @@ class _Stories extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 16, top: 8, bottom: 16),
               child: Text(
                 'Stories',
